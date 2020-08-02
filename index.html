@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Li buyan Blog</title><meta name="description"><meta name="author" content="Li buyan"><meta name="copyright" content="Li buyan"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Li buyan Blog"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="Li buyan Blog"><meta property="og:description"><meta property="og:image" content="http://yoursite.com/img/avatar.jpg"><meta property="article:published_time" content="2020-08-02T02:46:47.225Z"><meta property="article:modified_time" content="2020-08-02T02:46:47.225Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Li buyan Blog</title><meta name="description"><meta name="author" content="Li buyan"><meta name="copyright" content="Li buyan"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="Li buyan Blog"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="Li buyan Blog"><meta property="og:description"><meta property="og:image" content="http://yoursite.com/img/avatar.jpg"><meta property="article:published_time" content="2020-08-02T03:25:34.045Z"><meta property="article:modified_time" content="2020-08-02T03:25:34.045Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
   document.documentElement.setAttribute('data-theme', 'dark')
   if (document.querySelector('meta[name="theme-color"]') !== null) {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
@@ -89,7 +89,7 @@ if (autoChangeMode === '1') {
   isHome: true,
   isHighlightShrink: false,
   isSidebar: false,
-  postUpdate: '2020-08-02 10:46:47'
+  postUpdate: '2020-08-02 11:25:34'
 }</script><noscript><style>
 #nav {
   opacity: 1
@@ -170,22 +170,17 @@ More info: Deployment
   document.getElementById('loading-box').classList.add("loaded")
 }
 window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
-  $.getJSON('https://v1.hitokoto.cn', function (data) {
-    if (true) {
-      var from = '出自 ' + data.from
-      var sub = "".length == 0 ? new Array() : "".split(',')
-      var both = sub.unshift(data.hitokoto, from)
-      var typed = new Typed('#subtitle', {
-        strings: sub,
-        startDelay: 300,
-        typeSpeed: 150,
-        loop: true,
-        backSpeed: 50,
-      })
-    } else {
-      document.getElementById('subtitle').innerHTML = data.hitokoto
-    }
-  })
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "死亡不是失去了生命&#44; 而是走出了时间,人生的意义在于选择&#44; 我选择真诚与干净&#44; 是因为它能让我踏实,如果尖锐的批评完全消失&#44; 温和的批评将会变得刺耳,如果温和的批评也不被允许&#44; 沉默将被认为居心叵测,如果沉默也不再允许&#44; 赞扬不够卖力将是一种罪行,算不尽芸芸众生微贱命&#44; 回头看五味杂陈奈何天,时无英雄&#44; 使竖子成名,为天地立心&#44; 为生民立命, 为往圣继绝学, 为万世开太平,白昼之光&#44; 岂知夜色之深,不为有益之事&#44; 安能悦有崖之生,事实上&#44; 你们对我的百般注解和识读&#44; 并不构成万分之一的我&#44; 却是一览无遗的你们,".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
+  } else {
+    document.getElementById("subtitle").innerHTML = '死亡不是失去了生命&#44; 而是走出了时间'
+  }
 }
 
 if (true) {
@@ -193,5 +188,4 @@ if (true) {
   else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
 } else {
   subtitleType()
-}
-</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
