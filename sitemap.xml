@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/08/03/%E4%BD%BF%E7%94%A8SpringBoot%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD/</loc>
+    <loc>http://yoursite.com/2020/08/05/Postman%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2020-08-03T14:45:52.222Z</lastmod>
+    <lastmod>2020-08-07T15:01:44.095Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/08/03/%E4%BD%BF%E7%94%A8EasyExcel%E5%AF%BC%E5%87%BAExcel%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2020-08-03T14:23:18.472Z</lastmod>
+    <lastmod>2020-08-07T05:21:20.417Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2020/08/03/%E4%BD%BF%E7%94%A8EasyExcel%E5%AF%BC%E5%85%A5Excel%E6%96%87%E4%BB%B6/</loc>
     
-    <lastmod>2020-08-03T12:14:17.192Z</lastmod>
+    <lastmod>2020-08-07T05:18:10.040Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/08/03/%E4%BD%BF%E7%94%A8SpringBoot%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD/</loc>
+    
+    <lastmod>2020-08-03T14:45:52.222Z</lastmod>
     
   </url>
   
