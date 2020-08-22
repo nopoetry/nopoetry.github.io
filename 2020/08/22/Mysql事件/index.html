@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mysql事件 | Li buyan Blog</title><meta name="description" content="Mysql事件的说明与使用"><meta name="keywords" content="Mysql, 事件"><meta name="author" content="Li buyan"><meta name="copyright" content="Li buyan"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/08/22/Mysql%E4%BA%8B%E4%BB%B6/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Mysql事件"><meta property="og:url" content="http://yoursite.com/2020/08/22/Mysql%E4%BA%8B%E4%BB%B6/"><meta property="og:site_name" content="Li buyan Blog"><meta property="og:description" content="Mysql事件的说明与使用"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-08-22T08:38:48.000Z"><meta property="article:modified_time" content="2020-08-22T08:40:05.212Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-08-22 16:40:05'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.0"><link rel="alternate" href="/atom.xml" title="Li buyan Blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">11</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E4%BA%8B%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1、事件概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%9F%A5%E7%9C%8B%E4%BA%8B%E4%BB%B6%E8%B0%83%E5%BA%A6%E5%99%A8%E6%98%AF%E5%90%A6%E5%BC%80%E5%90%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 查看事件调度器是否开启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%BC%80%E5%90%AF%E6%88%96%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 开启或关闭事件调度器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E9%80%9A%E8%BF%87%E8%AE%BE%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.2.1 通过设置全局参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E9%80%9A%E8%BF%87%E6%9B%B4%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2.2 通过更改配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E4%BA%8B%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">2、创建事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E6%9F%A5%E8%AF%A2%E4%BA%8B%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3、查询事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81%E4%BF%AE%E6%94%B9%E4%BA%8B%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">4、修改事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5%E3%80%81%E5%90%AF%E5%8A%A8%E4%B8%8E%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">5、启动与关闭事件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6%E3%80%81%E5%88%A0%E9%99%A4%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">6、删除事件</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Li buyan Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Mysql事件</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-22T08:38:48.000Z" title="发表于 2020-08-22 16:38:48">2020-08-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-22T08:40:05.212Z" title="更新于 2020-08-22 16:40:05">2020-08-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Mysql/">Mysql</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="1、事件概述"><a href="#1、事件概述" class="headerlink" title="1、事件概述"></a>1、事件概述</h1><p>在MySQL 5.1中新增了一个特色功能事件调度器（Event Scheduler），简称事件。它可以作为定时任务调度器，取代部分原来只能用操作系统的计划任务才能执行的工作。另外，更值得一提的是，MySQL的事件可以实现每秒钟执行一个任务，这在一些对实时性要求较高的环境下是非常实用的。</p>
+<p>事件调度器是定时触发执行的，从这个角度上看也可以称作是“临时触发器”。但是它与触发器又有所区别，触发器只针对某个表产生的事件执行一些语句，而事件调度器则是在某一段（间隔）时间执行一些语句。</p>
+<h2 id="1-1-查看事件调度器是否开启"><a href="#1-1-查看事件调度器是否开启" class="headerlink" title="1.1 查看事件调度器是否开启"></a>1.1 查看事件调度器是否开启</h2><p>事件由一个特定的线程来管理。启用事件调度器后，拥有SUPER权限的账户执行SHOW PROCESSLIST就可以看到这个线程了。</p>
+<p><strong>示例：</strong>查看事件是否开启。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">&#x27;event_scheduler&#x27;</span>;<span class="keyword">SELECT</span> @@event_scheduler;<span class="keyword">SHOW</span> <span class="keyword">PROCESSLIST</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-开启或关闭事件调度器"><a href="#1-2-开启或关闭事件调度器" class="headerlink" title="1.2 开启或关闭事件调度器"></a>1.2 开启或关闭事件调度器</h2><p>通过设定全局变量event_scheduler的值即可动态的控制事件调度器是否启用。开启MySQL的事件调度器，可以通过下面两种方式实现。</p>
+<h3 id="1-2-1-通过设置全局参数"><a href="#1-2-1-通过设置全局参数" class="headerlink" title="1.2.1 通过设置全局参数"></a>1.2.1 通过设置全局参数</h3><p>使用SET GLOBAL命令可以开启或关闭事件。将event_scheduler参数的值设置为ON，则开启事件；如果设置为OFF，则关闭事件。</p>
+<p><strong>示例：</strong>使用SET GLOBAL命令可以开启或关闭事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 开启事件调度器SET GLOBAL event_scheduler = ON; -- 关闭事件调度器SET GLOBAL event_scheduler = OFF; -- 查看事件调度器状态SHOW VARIABLES LIKE &#x27;event_scheduler&#x27;;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>如果想要始终开启事件，那么在使用SET GLOBAL开启事件后，还需要在my.ini（Windows系统）/my.cnf（Linux系统）中添加event_scheduler=on。因为如果没有添加，MySQL重启事件后又会回到原来的状态。</p>
+<h3 id="1-2-2-通过更改配置文件"><a href="#1-2-2-通过更改配置文件" class="headerlink" title="1.2.2 通过更改配置文件"></a>1.2.2 通过更改配置文件</h3><p>在MySQL的配置文件my.ini（Windows系统）/my.cnf（Linux系统）中，找对[mysqld]，然后在下面添加以下代码开启事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 事件调度器启动状态event_scheduler = on</span></span><br></pre></td></tr></table></figure>
+
+<p>在配置文件中添加代码并保存文件后，还需要重新启动MySQL服务器才能生效。通过该方法开启事件，重启MySQL服务器后，不恢复为系统默认的状态。</p>
+<h1 id="2、创建事件"><a href="#2、创建事件" class="headerlink" title="2、创建事件"></a>2、创建事件</h1><p>在MySQL 5.1以上版本中，可以通过CREATE EVENT语句来创建事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span>    [DEFINER=&#123;<span class="keyword">user</span> | <span class="keyword">CURRENT_USER</span>&#125;]    <span class="keyword">EVENT</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] event_name    <span class="keyword">ON</span> SCHEDULE schedule    [<span class="keyword">ON</span> COMPLETION [<span class="keyword">NOT</span>] <span class="keyword">PRESERVE</span>]    [<span class="keyword">ENABLE</span> | <span class="keyword">DISABLE</span> | <span class="keyword">DISABLE</span> <span class="keyword">ON</span> <span class="keyword">SLAVE</span>]    [<span class="keyword">COMMENT</span> <span class="string">&#x27;comment&#x27;</span>]    <span class="keyword">DO</span> event_body;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CREATE EVENT语句的子句：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">子句</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">DEFINER</td>
+<td align="left">可选，用于定义事件执行时检查权限的用户</td>
+</tr>
+<tr>
+<td align="left">IF NOT EXISTS</td>
+<td align="left">可选项，用于判断要创建的事件是否存在</td>
+</tr>
+<tr>
+<td align="left">EVENT event_name</td>
+<td align="left">必选，用于指定事件名，event_name的最大长度为64个字符，如果为指定event_name，则默认为当前的MySQL用户名（不区分大小写）</td>
+</tr>
+<tr>
+<td align="left">ON SCHEDULE schedule</td>
+<td align="left">必选，用于定义执行的时间和时间间隔</td>
+</tr>
+<tr>
+<td align="left">ON COMPLETION [NOT] PRESERVE</td>
+<td align="left">可选，用于定义事件是否循环执行，即是一次执行还是永久执行，默认为一次执行，即 NOT PRESERVE</td>
+</tr>
+<tr>
+<td align="left">ENABLE | DISABLE | DISABLE ON SLAVE</td>
+<td align="left">可选项，用于指定事件的一种属性。其中，关键字ENABLE表示该事件是活动的，也就是调度器检查事件是否必选调用；关键字DISABLE表示该事件是关闭的，也就是事件的声明存储到目录中，但是调度器不会检查它是否应该调用；关键字DISABLE ON SLAVE表示事件在从机中是关闭的。如果不指定这三个选择中的任意一个，则在一个事件创建之后，它立即变为活动的。</td>
+</tr>
+<tr>
+<td align="left">COMMENT ‘comment’</td>
+<td align="left">可选，用于定义事件的注释</td>
+</tr>
+<tr>
+<td align="left">DO event_body</td>
+<td align="left">必选，用于指定事件启动时所要执行的代码。可以是任何有效的SQL语句、存储过程或者一个计划执行的事件。如果包含多条语句，可以使用BEGIN…END复合结构</td>
+</tr>
+</tbody></table>
+<p>在ON SCHEDULE子句中，参数schedule的值为一个AS子句，用于指定事件在某个时刻发生，其语法格式如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">AT timestamp [+ INTERVAL interval] ...  | EVERY interval    [STARTS timestamp [+ INTERVAL interval] ...]    [ENDS timestamp [+ INTERVAL interval] ...]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明：</strong></p>
+<p>（1）timestamp：表示一个具体的时间点，后面加上一个时间间隔，表示在这个时间间隔后事件发生。</p>
+<p>（2）EVERY子句：用于表示事件在指定时间区间内每隔多长时间发生一次，其中 SELECT子句用于指定开始时间；ENDS子句用于指定结束时间。</p>
+<p>（3）interval：表示一个从现在开始的时间，其值由一个数值和单位构成。例如，使用“4 WEEK”表示4周；使用“‘1:10’ HOUR_MINUTE”表示1小时10分钟。间隔的距离用DATE_ADD()函数来支配。</p>
+<p>interval参数值的语法格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">quantity &#123;YEAR | QUARTER | MONTH | DAY | HOUR | MINUTE |              WEEK | SECOND | YEAR_MONTH | DAY_HOUR | DAY_MINUTE |              DAY_SECOND | HOUR_MINUTE | HOUR_SECOND | MINUTE_SECOND&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>一些常用的时间间隔设置：</strong></p>
+<p>（1）每隔5秒钟执行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 5 SECOND</span><br></pre></td></tr></table></figure>
+
+<p>（2）每隔1分钟执行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 1 MINUTE</span><br></pre></td></tr></table></figure>
+
+<p>（3）每天凌晨1点执行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 1 DAY STARTS DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 1 DAY), INTERVAL 1 HOUR)</span><br></pre></td></tr></table></figure>
+
+<p>（4）每个月的第一天凌晨1点执行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 1 MONTH STARTS DATE_ADD(DATE_ADD(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),INTERVAL 1 MONTH),INTERVAL 1 HOUR)</span><br></pre></td></tr></table></figure>
+
+<p>（5）每 3 个月，从现在起一周后开始</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 3 MONTH STARTS CURRENT_TIMESTAMP + 1 WEEK</span><br></pre></td></tr></table></figure>
+
+<p>（6）每十二个小时，从现在起三十分钟后开始，并于现在起四个星期后结束</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">ON SCHEDULE EVERY 12 HOUR STARTS CURRENT_TIMESTAMP + INTERVAL 30 MINUTE ENDS CURRENT_TIMESTAMP + INTERVAL 4 WEEK</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例1：</strong>创建名称为event_user的事件，用于每隔5秒钟向数据表tb_user（用户信息表）中插入一条数据。</p>
+<p>（1）首先创建tb_user（用户信息表）。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建用户信息表CREATE TABLE IF NOT EXISTS tb_user(    id INT AUTO_INCREMENT PRIMARY KEY COMMENT &#x27;用户编号&#x27;,    name VARCHAR(30) NOT NULL COMMENT &#x27;用户姓名&#x27;,    create_time TIMESTAMP COMMENT &#x27;创建时间&#x27;) COMMENT = &#x27;用户信息表&#x27;;</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）创建事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 创建事件CREATE EVENT IF NOT EXISTS event_userON SCHEDULE EVERY 5 SECONDON COMPLETION PRESERVECOMMENT &#x27;新增用户信息定时任务&#x27;DO INSERT INTO tb_user(name,create_time) VALUES(&#x27;pan_junbiao的博客&#x27;,NOW());</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例2：</strong>创建一个事件，实现每个月的第一天凌晨1点统计一次已经注册的会员人数，并插入到统计表中。</p>
+<p>（1）创建名称为p_total的存储过程，用于统计已经注册的会员人数，并插入到统计表tb_total中。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> p_total()<span class="keyword">BEGIN</span>    <span class="keyword">DECLARE</span> n_total <span class="built_in">INT</span> <span class="keyword">default</span> <span class="number">0</span>;    <span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">INTO</span> n_total <span class="keyword">FROM</span> db_database11.tb_user;    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> tb_total (userNumber,createtime) <span class="keyword">VALUES</span>(n_total,<span class="keyword">NOW</span>());<span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<p>（2）创建名称为e_autoTotal的事件，用于在每个月的第一天凌晨1点调用存储过程。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EVENT</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> e_autoTotalON SCHEDULE EVERY <span class="number">1</span> <span class="keyword">MONTH</span> STARTS <span class="keyword">DATE_ADD</span>(<span class="keyword">DATE_ADD</span>(<span class="keyword">DATE_SUB</span>(<span class="keyword">CURDATE</span>(),<span class="built_in">INTERVAL</span> <span class="keyword">DAY</span>(<span class="keyword">CURDATE</span>())<span class="number">-1</span> <span class="keyword">DAY</span>),<span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>),<span class="built_in">INTERVAL</span> <span class="number">1</span> <span class="keyword">HOUR</span>)<span class="keyword">ON</span> COMPLETION <span class="keyword">PRESERVE</span> ENABLEDO <span class="keyword">CALL</span> p_total();</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3、查询事件"><a href="#3、查询事件" class="headerlink" title="3、查询事件"></a>3、查询事件</h1><p>在MySQL中可以通过查询information_schema.events表，查看已创建的事件。其语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> information_schema.events; </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="4、修改事件"><a href="#4、修改事件" class="headerlink" title="4、修改事件"></a>4、修改事件</h1><p>在MySQL 5.1及以后版本中，事件被创建之后，还可以使用ALTER EVENT语句修改其定义和相关属性。其语法如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span>    [DEFINER=&#123;<span class="keyword">user</span> | <span class="keyword">CURRENT_USER</span>&#125;]    <span class="keyword">EVENT</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] event_name    <span class="keyword">ON</span> SCHEDULE schedule    [<span class="keyword">ON</span> COMPLETION [<span class="keyword">NOT</span>] <span class="keyword">PRESERVE</span>]    [<span class="keyword">ENABLE</span> | <span class="keyword">DISABLE</span> | <span class="keyword">DISABLE</span> <span class="keyword">ON</span> <span class="keyword">SLAVE</span>]    [<span class="keyword">COMMENT</span> <span class="string">&#x27;comment&#x27;</span>]    <span class="keyword">DO</span> event_body;</span><br></pre></td></tr></table></figure>
+
+<p>ALTER EVENT语句与CREATE EVENT语句基本相同。另外ALTER EVENT语句还有一个用法就是让一个事件关闭或再次活动。</p>
+<h1 id="5、启动与关闭事件"><a href="#5、启动与关闭事件" class="headerlink" title="5、启动与关闭事件"></a>5、启动与关闭事件</h1><p>另外ALTER EVENT语句还有一个用法就是让一个事件关闭或再次活动。</p>
+<p><strong>示例：</strong>启动名称为event_user的事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">EVENT</span> event_user <span class="keyword">ENABLE</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：</strong>关闭名称为event_user的事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">EVENT</span> event_user <span class="keyword">DISABLE</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="6、删除事件"><a href="#6、删除事件" class="headerlink" title="6、删除事件"></a>6、删除事件</h1><p>在MySQL 5.1及以后版本中，删除已经创建的事件可以使用DROP EVENT语句来实现。</p>
+<p><strong>示例：</strong>删除名称为event_user的事件。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">EVENT</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> event_user;</span><br></pre></td></tr></table></figure></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">libuyan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/08/22/Mysql%E4%BA%8B%E4%BB%B6/">http://yoursite.com/2020/08/22/Mysql%E4%BA%8B%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">Li buyan Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Mysql/">Mysql</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/08/09/%E8%BD%AC%E8%BD%BD-%E5%B9%B6%E6%9F%A5%E9%9B%86/"><img class="next-cover" data-lazy-src="https://backiee.com/static/wpdb/wallpapers/1000x563/188851.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">转载---并查集</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By Li buyan</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome to Li buyan Blog!</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div></body></html>
