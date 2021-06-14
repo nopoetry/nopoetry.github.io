@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/08/03/Hexo%E5%8D%9A%E5%AE%A2%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2021-06-14T09:52:43.450Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/12/04/Linux%E9%85%8D%E7%BD%AEmysql/</loc>
     
     <lastmod>2021-06-14T09:43:55.782Z</lastmod>
@@ -229,13 +236,6 @@
     <loc>http://yoursite.com/2020/08/03/%E4%BD%BF%E7%94%A8SpringBoot%E5%AE%8C%E6%88%90%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD/</loc>
     
     <lastmod>2020-08-03T14:45:52.222Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/08/03/Hexo%E5%8D%9A%E5%AE%A2%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E6%96%B9%E6%B3%95/</loc>
-    
-    <lastmod>2020-08-03T07:53:26.045Z</lastmod>
     
   </url>
   
